@@ -11,22 +11,13 @@ function Contact() {
     const [telephoneError, setTelephoneError] = useState(true);
 
     useEffect(() => {
-        (firstname !== '') ? setfirstnameError(false) : setfirstnameError(true);
-    }, [firstname])
-
-    useEffect(() => {
-        (lastname !== '') ? setlastnameError(false) : setlastnameError(true);
-    }, [lastname])
-
-    useEffect(() => {
         let emailPattern = /^([A-Za-z0-9_\-])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        (emailPattern.test(email)) ? setEmailError(false) : setEmailError(true);
-    }, [email])
-
-    useEffect(() => {
         let phonePattern = /^([0-9]{8})$/;
+        (firstname !== '') ? setfirstnameError(false) : setfirstnameError(true);
+        (lastname !== '') ? setlastnameError(false) : setlastnameError(true);
+        (emailPattern.test(email)) ? setEmailError(false) : setEmailError(true);
         (phonePattern.test(telephone)) ? setTelephoneError(false) : setTelephoneError(true);
-    }, [telephone])
+    })
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
